@@ -8,7 +8,8 @@ var base = 62;
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var dbURI = 'mongodb://localhost/url';
+//var dbURI = 'mongodb://localhost/url';
+var dbURI = 'mongodb://test:pwd@ds121171.mlab.com:21171/url';
 mongoose.connect(dbURI);
 var express = require('express');
 var app = new express();
@@ -57,9 +58,11 @@ app.get('/new/*', function (req, res) {
              
              var prefix = '';
              if (longUrl.substring(0, 5) === 'https') {
-                prefix = 'https://expressapp-parthasastry.c9users.io/short/https://';
+                prefix = 'https://intense-badlands-87447.herokuapp.com/short/https://'
+                //prefix = 'https://expressapp-parthasastry.c9users.io/short/https://';
              } else  if (longUrl.substring(0, 4) === 'http') {
-                prefix = 'https://expressapp-parthasastry.c9users.io/short/http://';
+                //prefix = 'https://expressapp-parthasastry.c9users.io/short/http://';
+                prefix = 'https://intense-badlands-87447.herokuapp.com/short/http://'
              }
              var shortUrl = prefix + convertToBase62(num).join('') + '.com';
              res.json({longUrl: longUrl, shortUrl: shortUrl});

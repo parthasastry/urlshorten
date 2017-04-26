@@ -1,7 +1,8 @@
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var dbURI = 'mongodb://localhost/url';
+//var dbURI = 'mongodb://localhost/url';
+var dbURI = 'mongodb://test:pwd@ds121171.mlab.com:21171/url';
 mongoose.connect(dbURI);
 
 var Schema = mongoose.Schema;
@@ -20,16 +21,16 @@ shortenUrl.find({}, function (err, docs) {
      }
 });
 
-// var newUrl = shortenUrl({
-//     longUrl: 'www.google.com',
-//     hash: 9999999
-// });
+var newUrl = shortenUrl({
+    longUrl: 'www.google.com',
+    hash: 9999999
+});
 
 
-// newUrl.save(function(err){
-//     if(err) {
-//         console.log('save error', err);
-//     } else {
-//         console.log('insert success');
-//     }
-// });
+newUrl.save(function(err){
+    if(err) {
+        console.log('save error', err);
+    } else {
+        console.log('insert success');
+    }
+});
